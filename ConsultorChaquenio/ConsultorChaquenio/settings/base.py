@@ -24,6 +24,11 @@ SECRET_KEY = '%!aovudgw-yft2(&l+#^su7vm&pl6zwi0%1#84bd&mdws31k&)'
 
 ALLOWED_HOSTS = []
 
+#User model
+AUTH_USER_MODEL = 'usuarios.Usuario';
+#LOGIN_REDIRECT_URL = reverse_lazy ('home');
+#LOGOUT_REDIRECT_URL = reverse_lazy ('login');
+#LOGIN_URL = reverse_lazy ('login');
 
 # Application definition
 
@@ -34,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.usuarios'
 ]
 
 MIDDLEWARE = [
