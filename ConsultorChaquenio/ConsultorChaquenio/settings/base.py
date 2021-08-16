@@ -111,6 +111,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-STATICFILES_DIR=(
-    os.path.join(os.path.dirname(BASE_DIR),'static/css'),
-)
+STATICFILES_DIRS = (os.path.join(os.path.dirname(BASE_DIR),'static'),)

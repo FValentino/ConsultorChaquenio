@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
 
     <title>Consultor Chaqueño</title>
   </head>
@@ -18,7 +20,7 @@
         <h1 class="display-1 text-center"> Consultor Chaqueño </h1>
         <br>
         <div class="row">
-          <img class="col rounded-circle" src="img/meteorito.png">
+          <img class="col rounded-circle" src="{% static 'img/meteorito.png'%}">
         </div>
         
       </section>
@@ -29,19 +31,19 @@
         <nav class="row navbar navbar-expand-lg navbar-light text-center">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="col-3 nav-item">
-              <a class="nav-link active text-bold" href="#"><strong>Inicio</strong></a>
+              <a class="nav-link active text-bold" href="{% url 'inicio' %}"><strong>Inicio</strong></a>
             </li>
 
             <li class="col-3 nav-item">
-             <a class="nav-link active" href="nosotros.html"><strong>Nosotros</strong></a>
+             <a class="nav-link active" href="{% url 'nosotros' %}"><strong>Nosotros</strong></a>
             </li>
 
             <li class="col-3 nav-item">
-              <a class="nav-link active" href="contacto.html"><strong>Contacto</strong></a>
+              <a class="nav-link active" href="{% url 'contacto' %}"><strong>Contacto</strong></a>
             </li>
 
             <li class="col-3 nav-item">
-              <a class="nav-link active" href="soporte.html"><strong>Soporte Tecnico</strong></a>
+              <a class="nav-link active" href="{% url 'soporte' %}"><strong>Soporte Tecnico</strong></a>
             </li>
           </ul>
         </nav>
@@ -71,7 +73,7 @@
           <br>
 
           <div>
-            <img class="img-fluid rounded float-start" src="img/chaco.jpg">
+            <img class="img-fluid rounded float-start" src="{% static 'img/chaco.jpg'%}">
           </div>
           <p class="text-justify">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -138,6 +140,6 @@
     <!-- Pooper.js -->
     <script src="./js/popper.min.js"></script>
     <!-- Bootstrap.js -->
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
   </body>
 </html>

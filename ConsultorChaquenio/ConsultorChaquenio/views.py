@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-'''def Inicio(request):
+def Inicio(request):
 	return render(request, 'index.html');
 
 def Nosotros(request):
@@ -11,4 +11,4 @@ def Contacto(request):
 	return render(request, 'contacto.html');
 
 def Soporte(request):
-	return render(request, 'soporte.html');'''
+	return render(request, 'soporte.html');
