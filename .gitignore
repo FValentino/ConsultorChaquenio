@@ -4,4 +4,4 @@ __pycache__/
 *.pyc
 
 #Ignorar local
-ConsultorChaquenio/ConsultorChaquenio/settings/local.py
+ConsultorChaquenio/settings/local.py
