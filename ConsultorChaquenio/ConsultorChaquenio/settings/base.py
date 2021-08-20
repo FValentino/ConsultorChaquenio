@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,10 +26,10 @@ SECRET_KEY = '%!aovudgw-yft2(&l+#^su7vm&pl6zwi0%1#84bd&mdws31k&)'
 ALLOWED_HOSTS = []
 
 #User model
-AUTH_USER_MODEL = 'usuarios.Usuario';
-#LOGIN_REDIRECT_URL = reverse_lazy ('home');
-#LOGOUT_REDIRECT_URL = reverse_lazy ('login');
-#LOGIN_URL = reverse_lazy ('login');
+AUTH_USER_MODEL = 'usuarios.Usuario'
+LOGIN_REDIRECT_URL = reverse_lazy ('inicio')
+LOGOUT_REDIRECT_URL = reverse_lazy ('login')
+LOGIN_URL = reverse_lazy ('login')
 
 # Application definition
 

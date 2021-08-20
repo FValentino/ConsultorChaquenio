@@ -13,13 +13,13 @@
                         <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                             <div class="col-lg-6">
                                 <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST">{% csrf_token %}
-                                        {{form.errors}}
                                         <div class="align-self-baseline">
-                                            <p class="text-white-75 mb-5">Completa el formulario para iniciar sesión en Consultor Chaqueño. Si no estás registrado, hacé click en el botón "Registrarme"</p>
+                                            <p class="text-white-75 mb-5">Inicia sesión en Consultor Chaqueño para poder jugar. Si no estás registrado, hacé click en el botón "Registrarme"</p>
                                             <a class="btn btn-primary btn-xl" href="">Registrame</a>
                                         </div>
                                             <!-- User input-->
-                                            <br> <br> <br>
+                                            <br> <br>
+                                            {{form.errors}}
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" type="text" name="username" placeholder="Ingrese el usuario">
                                                 <label for="name">Usuario</label>
