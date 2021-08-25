@@ -25,7 +25,7 @@ urlpatterns = [
 
     path('juego/', views.Juego, name='juego'),
 
-    path('registro/', views.Registro, name='registro'),
+    path('registro/', views.Registro.as_view(), name='registro'),
 
     path('login/',auth.LoginView.as_view(template_name = 'usuarios/login.html'),name = 'login'),
 

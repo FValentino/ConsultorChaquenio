@@ -15,44 +15,44 @@
                                 <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST">{% csrf_token %}
                                         <div class="align-self-baseline">
                                         </div>
-                                            <br> <br>
                                             {{form.errors}}
                                             <!-- Name input-->
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="fist_name" placeholder="Ingrese su nombre">
-                                                <label for="name">Nombre</label>
-                                                <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un nombre</div>
+                                            <div class="form-floating mb-1">
+                                                <input class="form-control" type="text" name="first_name" placeholder="Ingrese su nombre">
+                                                <label for="name">Nombre y Apellido</label>
+                                                <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un nombre y apellido</div>
                                             </div>
-                                            <!-- Last Name input-->
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="last_name" placeholder="Ingrese su apellido">
-                                                <label for="name">Apellido</label>
-                                                <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un apellido</div>
+                                            <!-- Localidad input-->
+                                            <div class="form-floating mb-1">
+                                                <input class="form-control" type="text" name="localidad" placeholder="Ingrese su Localidad">
+                                                <label for="name">Localidad</label>
+                                                <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere una localidad</div>
                                             </div>
                                             <!-- Email input-->
-                                            <div class="form-floating mb-3">
+                                            <div class="form-floating mb-1">
                                                 <input class="form-control" type="email" name="email" placeholder="Ingrese su email">
                                                 <label for="name">Email</label>
                                                 <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un email</div>
                                             </div>
                                             <!-- User input-->
-                                            <div class="form-floating mb-3">
+                                            <div class="form-floating mb-1">
                                                 <input class="form-control" type="text" name="username" placeholder="Ingrese el usuario">
                                                 <label for="name">Usuario</label>
                                                 <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un usuario</div>
                                             </div>
                                             <!-- Contraseña-->
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="email" type="password" name="password" placeholder="Ingrese la contraseña">
+                                            <div class="form-floating mb-1">
+                                                <input class="form-control" id="email" type="password" name="password1" placeholder="Ingrese la contraseña">
                                                 <label for="email">Contraseña</label>
                                                 <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere una contraseña</div>
                                             </div>
                                             <!-- Contraseña 2-->
-                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="email" type="password" name="password" placeholder="Vuelva a ingresar la contraseña">
+                                             <div class="form-floating mb-1">
+                                                <input class="form-control" id="email" type="password" name="password2" placeholder="Vuelva a ingresar la contraseña">
                                                 <label for="email">Repetir Contraseña</label>
                                                 <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere una contraseña</div>
                                             </div>
+                                            <br>
                                             <!-- Submit Button-->
                                             <input class="btn btn-primary btn-xl" type="submit" name="" value="Registrarme">
                                 </form>

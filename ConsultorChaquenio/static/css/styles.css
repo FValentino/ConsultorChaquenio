@@ -11380,7 +11380,7 @@ hr.divider-light {
   }
 } 
 
-header.masthead {
+header.inicio {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
   background-image: url("../img/img/ChacoPortada.jpg");
@@ -11390,25 +11390,124 @@ header.masthead {
   background-attachment: scroll;
   background-size: cover;
 }
-header.masthead h1, header.masthead .h1 {
+header.inicio h1, header.inicio .h1 {
   font-size: 2.25rem;
 }
 @media (min-width: 992px) {
-  header.masthead {
+  header.inicio {
     height: 100vh;
     min-height: 40rem;
     padding-top: 4.5rem;
     padding-bottom: 0;
   }
-  header.masthead p {
+  header.inicio p {
     font-size: 1.15rem;
   }
-  header.masthead h1, header.masthead .h1 {
+  header.inicio h1, header.inicio .h1 {
     font-size: 3rem;
   }
 }
 @media (min-width: 1200px) {
-  header.masthead h1, header.masthead .h1 {
+  header.inicio h1, header.inicio .h1 {
+    font-size: 3.5rem;
+  }
+}
+
+header.juego {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background-image: url("../img/img/JuegoPortada.jpg");
+  background-color: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+header.juego h1, header.juego .h1 {
+  font-size: 2.25rem;
+}
+@media (min-width: 992px) {
+  header.juego {
+    height: 100vh;
+    min-height: 40rem;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+  }
+  header.juego p {
+    font-size: 1.15rem;
+  }
+  header.juego h1, header.juego .h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  header.juego h1, header.juego .h1 {
+    font-size: 3.5rem;
+  }
+}
+
+header.inicioSesion {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background-image: url("../img/img/InicioSesionPortada.jpg");
+  background-color: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+header.inicioSesion h1, header.inicioSesion .h1 {
+  font-size: 2.25rem;
+}
+@media (min-width: 992px) {
+  header.inicioSesion {
+    height: 100vh;
+    min-height: 40rem;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+  }
+  header.inicioSesion p {
+    font-size: 1.15rem;
+  }
+  header.inicioSesion h1, header.inicioSesion .h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  header.inicioSesion h1, header.inicioSesion .h1 {
+    font-size: 3.5rem;
+  }
+}
+
+header.registro {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background-image: url("../img/img/RegistroPortada.jpg");
+  background-color: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+header.registro h1, header.registro .h1 {
+  font-size: 2.25rem;
+}
+@media (min-width: 992px) {
+  header.registro {
+    height: 100vh;
+    min-height: 40rem;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+  }
+  header.registro p {
+    font-size: 1.15rem;
+  }
+  header.registro h1, header.registro .h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  header.registro h1, header.registro .h1 {
     font-size: 3.5rem;
   }
 }
