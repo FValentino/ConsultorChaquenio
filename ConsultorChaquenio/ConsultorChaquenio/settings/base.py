@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'apps.categorias',
     'apps.preguntas',
     'apps.respuestas',
+    'apps.juego',
 ]
 
 MIDDLEWARE = [
