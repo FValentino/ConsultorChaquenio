@@ -3,7 +3,7 @@
 
 {% block contenido %}
 
-<header class="masthead">
+<header class="inicioSesion">
     <div class="container px-4 px-lg-5 h-100">
         <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
             <div class="col-lg-8 align-self-end">
@@ -18,7 +18,7 @@
                                         <a class="btn btn-primary btn-xl" href="{% url 'registro' %}">Registrarme</a>
                                     </div>
                                         <!-- User input-->
-                                        <br> <br>
+                                        <br>
                                         {{form.errors}}
                                         <div class="form-floating mb-3">
                                             <input class="form-control" type="text" name="username" placeholder="Ingrese el usuario">
