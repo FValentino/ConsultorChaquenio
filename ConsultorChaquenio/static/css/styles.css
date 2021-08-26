@@ -7805,7 +7805,12 @@ textarea.form-control-lg {
 
 .bg-secondary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #1db062 !important;
+}
+
+.bg-tres {
+  --bs-bg-opacity: 1;
+  background-color: #94c9e9 !important;
 }
 
 .bg-success {
@@ -11345,7 +11350,8 @@ hr.divider-light {
   #mainNav {
     height: 50px;
     box-shadow: none;
-    background-color: #f4623a;
+    background-color: black;
+    transition:background-color 500ms, color 500ms;
   }
 
   
@@ -11384,6 +11390,17 @@ hr.divider-light {
     color: #f4623a;
   }
 } 
+
+.navscroll {
+  background-color:purple;
+  color:yellow;
+  transition:background-color 500ms, color 500ms;
+}
+
+.navscroll.azul {
+  background-color:blue;
+  color:white;
+}
 
 header.masthead {
   padding-top: 10rem;
