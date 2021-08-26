@@ -11350,23 +11350,22 @@ hr.divider-light {
   #mainNav {
     height: 50px;
     box-shadow: none;
-    background-color: #1db062;
-    transition:background-color 500ms, color 500ms;
+    background-color: #94c9e9;
   }
 
   
   #mainNav .navbar-brand {
-    color: #fff;
+    color: #000000;
   }
   #mainNav .navbar-brand:hover {
-    color: #fff;
+    color: #000000;
   }
   #mainNav .navbar-nav .nav-item .nav-link {
-    color: #fff;
+    color: #000000;
     padding: 0 1rem;
   }
   #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #fff;
+    color: #000000;
   }
 
 
