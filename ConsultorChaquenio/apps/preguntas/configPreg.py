@@ -8,3 +8,9 @@ def filtro (e, lista):
 			break;
 
 	return unico;
+
+def eliminacion(lista):
+	for i in range (len(lista)):
+		lista.pop();
+
+	return (lista);

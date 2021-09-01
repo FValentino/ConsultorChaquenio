@@ -18,6 +18,26 @@
 	
 	<h1>DETALLES</h1>
 
+    <table>
+
+        <tr>
+            <td>PREGUNTA REALIZADA</td> 
+            <td>RESPUESTA INGRESADA</td>
+            <td>RESPUESTA CORRECTA</td>
+        </tr>
+
+        {% for r in respuestas %}
+            <tr>
+                <td> {{preguntas.enunciado}} </td>
+                <td> {{respuestasSeleccionadas}} </td>
+                <td> {{respuestasCorrectas}} </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <p> {{puntajeTotal}} </p>
+
 </main>
 
 {% endblock contenido %}

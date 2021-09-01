@@ -4,53 +4,89 @@ from django.http import HttpResponse
 
 from apps.preguntas.models import Pregunta
 from apps.respuestas.models import Respuesta
+from .models import Funcionamiento
 
-from apps.preguntas.configPreg import filtro
+from apps.preguntas.configPreg import filtro, eliminacion
 
 import random
 
 # Create your views here.
 
-preguntas_Nros = [];
+contPreg = 0;
+puntajeTotal = 0;
 
-respondido = [];
+totalPreguntas = [];
+totalRespuestasCorrectas = [];
+totalRespuestasSeleccionadas = [];
+
+RespuestaCorrecta = "";
+RespuestaSeleccionada = "";
 
 @login_required
 def Home (request):
 	return render(request, 'juego/inicio.html')
 
 
+def Juego (request):
 
+	global contPreg;
+	global totalPreguntas;
+	global RespuestaCorrecta;
+	global totalRespuestasCorrectas;
 
-
-
-def Preguntas (request):
 	context = {};
-	preguntas='';
 
-	e = random.randint(1,32);
+	contPreg = contPreg + 1;
 
-	preguntas_Nros.append( filtro(e, preguntas_Nros) );
+	pregunta = Funcionamiento.obtenerPreguntas();
 
+	context ["pregunta"] = pregunta;
 
-	if (len(preguntas_Nros)<11):
-		context['preguntas'] = Pregunta.objects.get(id=e);
-		context['respuestas'] = Respuesta.objects.filter(pregunta_id=e);
+	if (contPreg==11):
 
-		return render(request, 'juego/pregunta.html', context);
-		
-	else:
-
-		#eliminacion(preguntas_Nros);
 		return render(request, 'juego/fin.html');
 
-def Respuestas (request):
+	else:
+
+		pregunta = Funcionamiento.obtenerPreguntas();
+
+		context ["pregunta"] = pregunta;
+
+		context ["respuestas"] = Respuesta.objects.filter(pregunta_id = pregunta.pk);
+
+		RespuestaCorrecta = Respuesta.objects.get(pregunta_id = pregunta.pk, respuesta_correcta=1);
+
+		totalPreguntas.append(pregunta);
+
+		totalRespuestasCorrectas.append(RespuestaCorrecta);
+
+		print (RespuestaCorrecta);
+
+		return render(request, 'juego/juego.html', context)
+		
+
+def respuesta_seleccionada (request):
+
+	global totalRespuestas;
+	global RespuestaSeleccionada;
+	global RespuestaCorrecta
+	global puntajeTotal;
+	global totalRespuestasSeleccionadas;
 
 	context={};
 
-	rpta = request.GET["resp"];
+	RespuestasSeleccionada = request.GET["resp"];
 
-	context["RespuestaSeleccionada"] = rpta;
+	context["RespuestaSeleccionada"] = RespuestaSeleccionada;
+
+	if (RespuestaSeleccionada == RespuestaCorrecta.respuestas):
+		context ["Mensaje"] = "RESPONDIO CORRECTAMENTE";
+		puntajeTotal = puntajeTotal + 1;
+	else:
+		context ["Mensaje"] = "RESPONDIO INCORRECTAMENTE";
+
+	totalRespuestasSeleccionadas.append(RespuestaSeleccionada);
+
 
 	return render(request, "juego/respuesta.html", context);
 
@@ -58,4 +94,17 @@ def Respuestas (request):
 
 def Detalles(request):
 
-	return render(request, 'juego/detalles.html');
+	global totalRespuestas;
+	global totalRespuestasSeleccionadas;
+	global totalRespuestasCorrectas;
+
+	global puntajeTotal;
+
+	context = {};
+
+	context["preguntas"] = totalPreguntas;
+	context["respuestasSeleccionadas"] = totalRespuestasSeleccionadas;
+	context["respuestasCorrectas"] = totalRespuestasCorrectas;
+	context["puntaje"] = puntajeTotal;
+
+	return render(request, 'juego/detalles.html', context);

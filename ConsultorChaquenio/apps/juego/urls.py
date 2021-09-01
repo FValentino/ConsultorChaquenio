@@ -8,9 +8,9 @@ urlpatterns = [
 
     path('inicio/', views.Home, name='inicio'),
 
-    path('pregunta/', views.Preguntas, name="preguntas"),
+    path('pregunta/', views.Juego, name="pregunta"),
 
-    path('respuesta/', views.Respuestas),
+    path('respuesta/', views.respuesta_seleccionada),
 
     path('detalles/', views.Detalles, name="detalles"),
 ]
