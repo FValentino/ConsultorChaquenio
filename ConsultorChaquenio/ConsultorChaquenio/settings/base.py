@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'apps.preguntas',
     'apps.respuestas',
     'apps.juego',
-    'apps.ranking'
+    'apps.ranking',
 ]
 
 MIDDLEWARE = [
