@@ -15,6 +15,8 @@ class Funcionamiento(models.Model):
 
 		global excluidas;
 
+		i=0;
+
 		if (len(excluidas) == 0):
 
 			pregunta = random.choice(Pregunta.objects.all());
@@ -22,6 +24,13 @@ class Funcionamiento(models.Model):
 		else:
 
 			pregunta = random.choice(Pregunta.objects.exclude(pk__in = excluidas));
+
+			for i in range (len(excluidas)):
+				if (pregunta.pk == excluidas[i]):
+					pregunta = random.choice(Pregunta.objects.exclude(pk__in = excluidas));
+					i=0;
+				else:
+					break;
 
 		excluidas.append(pregunta.pk);
 

@@ -32,6 +32,8 @@ def Juego (request):
 
 	contPreg = contPreg + 1;
 
+	context["nro"] = contPreg;
+
 	pregunta = Funcionamiento.obtenerPreguntas();
 
 	context ["pregunta"] = pregunta;
@@ -89,6 +91,6 @@ def Detalles(request):
 
 	context["puntajeTotal"] = puntajeTotal;
 
-	puntajeTotal=0
+	puntajeTotal = 0;
 
 	return render(request, 'juego/detalles.html', context);
