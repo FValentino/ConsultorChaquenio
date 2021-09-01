@@ -15,10 +15,6 @@ import random
 contPreg = 0;
 puntajeTotal = 0;
 
-totalPreguntas = [];
-totalRespuestasCorrectas = [];
-totalRespuestasSeleccionadas = [];
-
 RespuestaCorrecta = "";
 RespuestaSeleccionada = "";
 
@@ -30,9 +26,7 @@ def Home (request):
 def Juego (request):
 
 	global contPreg;
-	global totalPreguntas;
 	global RespuestaCorrecta;
-	global totalRespuestasCorrectas;
 
 	context = {};
 
@@ -43,6 +37,8 @@ def Juego (request):
 	context ["pregunta"] = pregunta;
 
 	if (contPreg==11):
+
+		contPreg = 0;
 
 		return render(request, 'juego/fin.html');
 
@@ -56,27 +52,23 @@ def Juego (request):
 
 		RespuestaCorrecta = Respuesta.objects.get(pregunta_id = pregunta.pk, respuesta_correcta=1);
 
-		totalPreguntas.append(pregunta);
-
-		totalRespuestasCorrectas.append(RespuestaCorrecta);
-
-		print (RespuestaCorrecta);
-
 		return render(request, 'juego/juego.html', context)
 		
 
 def respuesta_seleccionada (request):
 
-	global totalRespuestas;
 	global RespuestaSeleccionada;
 	global RespuestaCorrecta
 	global puntajeTotal;
-	global totalRespuestasSeleccionadas;
 
 	context={};
 
-	RespuestasSeleccionada = request.GET["resp"];
+	RespuestaSeleccionada = None;
 
+	for i in request.POST:
+		if i != "csrfmiddlewaretoken":
+			RespuestaSeleccionada=i;
+ 
 	context["RespuestaSeleccionada"] = RespuestaSeleccionada;
 
 	if (RespuestaSeleccionada == RespuestaCorrecta.respuestas):
@@ -85,26 +77,16 @@ def respuesta_seleccionada (request):
 	else:
 		context ["Mensaje"] = "RESPONDIO INCORRECTAMENTE";
 
-	totalRespuestasSeleccionadas.append(RespuestaSeleccionada);
-
-
 	return render(request, "juego/respuesta.html", context);
 
 
 
 def Detalles(request):
 
-	global totalRespuestas;
-	global totalRespuestasSeleccionadas;
-	global totalRespuestasCorrectas;
-
 	global puntajeTotal;
 
 	context = {};
 
-	context["preguntas"] = totalPreguntas;
-	context["respuestasSeleccionadas"] = totalRespuestasSeleccionadas;
-	context["respuestasCorrectas"] = totalRespuestasCorrectas;
-	context["puntaje"] = puntajeTotal;
+	context["puntajeTotal"] = puntajeTotal;
 
 	return render(request, 'juego/detalles.html', context);

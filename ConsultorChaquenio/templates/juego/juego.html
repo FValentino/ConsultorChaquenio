@@ -20,32 +20,20 @@
 
 	<br>
 
-    <form action="/juego/respuesta/" method="GET"> 
-
-        <h3> RESPUESTAS </h3>
+    <form action="/juego/respuesta/" method="POST" > {% csrf_token %}
 
         {% for r in respuestas %}
 
-            
-            <p> {{r.respuestas}} </p>
+            <input type="radio" id="respuesta" name="{{r.respuestas}}">
 
+            <label for="respuesta"> {{r.respuestas}} </label>
+
+            <br>
 
         {% endfor %}
 
-        <label for="resp"> Escriba aqui su respuesta: </label>
-
-        <input type="text" id="resp" name="resp">
-
         <input type="submit" value="enviar">
     </form>
-
-    <!-- <form action="/juego/respuesta/" method="GET"> 
-
-        <label for="respuesta"> Ingrese su respuesta: </label>
-        <input type="text" id="respuesta" name="resp">
-
-        <input type="submit" value="siguiente">
-    </form>-->
 </main>
 
 {% endblock contenido %}
