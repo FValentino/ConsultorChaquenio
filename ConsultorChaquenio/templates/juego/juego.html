@@ -7,33 +7,24 @@
 <header class="masthead">
     <div class="container px-4 px-lg-5 h-100">
         <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-            <div class="col-lg-8 align-self-baseline">
-                <p class="text-white-75 mb-5">¡Bienvenido! ¿Que tanto conoces de Chaco?</p>
+            <div class="col-lg-12 text-white box">
+                <br>
+                <h2 class="text-white font-weight-bold">{{pregunta.enunciado}}</h2>
+                <br>
+                <form action="/juego/respuesta/" method="POST" > {% csrf_token %}
+                    <br>
+                    {% for r in respuestas %}          
+                        <input type="checkbox" id="respuesta" name="{{r.respuestas}}">
+                        <span class="check"></span>          
+                        <label for="respuesta"> {{r.respuestas}} </label>            
+                        <br>            
+                    {% endfor %}
+                    <br><br>
+                    <input class="btn btn-primary btn-xl" type="submit" value="enviar">
+                </form>
             </div>
         </div>
     </div>
 </header>
-
-<main>
-	
-    <p>{{pregunta.enunciado}}</p>
-
-	<br>
-
-    <form action="/juego/respuesta/" method="POST" > {% csrf_token %}
-
-        {% for r in respuestas %}
-
-            <input type="radio" id="respuesta" name="{{r.respuestas}}">
-
-            <label for="respuesta"> {{r.respuestas}} </label>
-
-            <br>
-
-        {% endfor %}
-
-        <input type="submit" value="enviar">
-    </form>
-</main>
 
 {% endblock contenido %}

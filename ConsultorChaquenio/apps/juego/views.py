@@ -72,10 +72,10 @@ def respuesta_seleccionada (request):
 	context["RespuestaSeleccionada"] = RespuestaSeleccionada;
 
 	if (RespuestaSeleccionada == RespuestaCorrecta.respuestas):
-		context ["Mensaje"] = "RESPONDIO CORRECTAMENTE";
+		context ["Mensaje"] = "¡Has respondido correctamente! ¡Sumas 1 punto!";
 		puntajeTotal = puntajeTotal + 1;
 	else:
-		context ["Mensaje"] = "RESPONDIO INCORRECTAMENTE";
+		context ["Mensaje"] = "Has respondido incorrectamente.";
 
 	return render(request, "juego/respuesta.html", context);
 
@@ -88,5 +88,7 @@ def Detalles(request):
 	context = {};
 
 	context["puntajeTotal"] = puntajeTotal;
+
+	puntajeTotal=0
 
 	return render(request, 'juego/detalles.html', context);
