@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+<header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 mb-5">¡Bienvenido! ¿Que tanto conoces de Chaco?</p>
+                <a class="btn btn-primary btn-xl" href="{% url 'juego:preguntas' %}">SIGUIENTE</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+	
+	<p>{{preguntas.enunciado}}</p>
+
+    
+
+	<br>
+
+    <form action="/juego/respuesta/" method="GET"> 
+
+        {% for r in respuestas %}
+
+            <input type="radio" id="resp" name="resp">
+            <label for="resp"> {{r.respuestas}} </label>
+            <br>
+
+
+        {% endfor %}
+
+        <input type="submit" value="siguiente">
+    </form>
+
+
+    <!-- <form action="/juego/respuesta/" method="GET"> 
+
+        <label for="respuesta"> Ingrese su respuesta: </label>
+        <input type="text" id="respuesta" name="resp">
+
+        <input type="submit" value="siguiente">
+    </form>-->
+</main>
+
+{% endblock contenido %}

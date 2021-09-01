@@ -23,11 +23,12 @@ urlpatterns = [
 
     path('', views.Inicio, name='inicio'),
 
-    path('juego/', views.Juego, name='juego'),
-
     path('registro/', views.Registro.as_view(), name='registro'),
 
     path('login/',auth.LoginView.as_view(template_name = 'usuarios/login.html'),name = 'login'),
 
     path('logout/',auth.LogoutView.as_view(),name = 'logout'),
+
+    #juego
+    path('juego/', include('apps.juego.urls')),
 ]

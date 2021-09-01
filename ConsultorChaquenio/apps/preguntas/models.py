@@ -1,5 +1,6 @@
 from django.db import models
 from apps.categorias.models import Categoria
+
 # Create your models here.
 
 class Pregunta(models.Model):
