@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
+from apps.usuarios.models import Usuario
 from apps.preguntas.models import Pregunta
 from apps.respuestas.models import Respuesta
-from .models import Funcionamiento
+from apps.categorias.models import Categoria
 
-from apps.preguntas.configPreg import filtro, eliminacion
+from .models import Funcionamiento
 
 import random
 
@@ -14,12 +15,14 @@ import random
 
 contPreg = 0;
 puntajeTotal = 0;
+puntajeRanking = 0;
 
 RespuestaCorrecta = "";
 RespuestaSeleccionada = "";
 
 @login_required
 def Home (request):
+
 	return render(request, 'juego/inicio.html')
 
 
@@ -27,20 +30,25 @@ def Juego (request):
 
 	global contPreg;
 	global RespuestaCorrecta;
+	global puntajeTotal;
 
 	context = {};
 
 	contPreg = contPreg + 1;
 
-	context["nro"] = contPreg;
-
 	pregunta = Funcionamiento.obtenerPreguntas();
 
+	categoria = pregunta.categoria;
+
+	context ["numero"] = contPreg;
 	context ["pregunta"] = pregunta;
+	context ["categoria"] = categoria;
 
 	if (contPreg==11):
 
 		contPreg = 0;
+
+		Usuario.actualizacionPuntaje(puntajeTotal);
 
 		return render(request, 'juego/fin.html');
 
@@ -57,7 +65,7 @@ def Juego (request):
 		return render(request, 'juego/juego.html', context)
 		
 
-def respuesta_seleccionada (request):
+def Respuesta_Seleccionada (request):
 
 	global RespuestaSeleccionada;
 	global RespuestaCorrecta
@@ -75,7 +83,9 @@ def respuesta_seleccionada (request):
 
 	if (RespuestaSeleccionada == RespuestaCorrecta.respuestas):
 		context ["Mensaje"] = "¡Has respondido correctamente! ¡Sumas 1 punto!";
-		puntajeTotal = puntajeTotal + 1;
+
+		puntajeTotal += 1;
+
 	else:
 		context ["Mensaje"] = "Has respondido incorrectamente.";
 
@@ -85,12 +95,32 @@ def respuesta_seleccionada (request):
 
 def Detalles(request):
 
+	global puntajeRanking;
+
 	global puntajeTotal;
 
 	context = {};
 
 	context["puntajeTotal"] = puntajeTotal;
 
-	puntajeTotal = 0;
+	
 
 	return render(request, 'juego/detalles.html', context);
+
+
+def Tabla(request):
+
+	context = {};
+
+	mostrar_usuarios = Usuarios.objects.order_by('puntaje_total')[:10];
+
+	contador = mostrar_usuarios.count();
+
+	context = {
+
+		"usuario": mostrar_usuarios,
+		"cantidad": contador
+
+	}
+
+	return render(request,"juego/ranking.html",context );

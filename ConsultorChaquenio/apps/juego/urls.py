@@ -10,7 +10,7 @@ urlpatterns = [
 
     path('pregunta/', views.Juego, name="pregunta"),
 
-    path('respuesta/', views.respuesta_seleccionada),
+    path('respuesta/', views.Respuesta_Seleccionada),
 
     path('detalles/', views.Detalles, name="detalles"),
 ]

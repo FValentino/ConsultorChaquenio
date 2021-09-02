@@ -2,6 +2,7 @@ from django.db import models
 from django.http import HttpResponse
 
 from apps.preguntas.models import Pregunta
+from apps.usuarios.models import Usuario
 
 import random
 
@@ -15,24 +16,18 @@ class Funcionamiento(models.Model):
 
 		global excluidas;
 
-		i=0;
-
-		if (len(excluidas) == 0):
+		pregunta = random.choice(Pregunta.objects.all());
+			
+		if ( len(excluidas)>0 ):
 
 			pregunta = random.choice(Pregunta.objects.all());
-			
-		else:
-
-			pregunta = random.choice(Pregunta.objects.exclude(pk__in = excluidas));
 
 			for i in range (len(excluidas)):
-				if (pregunta.pk == excluidas[i]):
-					pregunta = random.choice(Pregunta.objects.exclude(pk__in = excluidas));
+				if (pregunta.id == excluidas[i]):
+					pregunta = random.choice(Pregunta.objects.all());
 					i=0;
-				else:
-					break;
 
-		excluidas.append(pregunta.pk);
+		excluidas.append(pregunta.id);
 
 		if (len(excluidas)>9):
 
