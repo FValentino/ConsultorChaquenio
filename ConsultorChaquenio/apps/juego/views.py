@@ -48,11 +48,11 @@ def Juego (request):
 
 		contPreg = 0;
 
-		usuario = Usuario.objects.get(username = request.user);
-
-		usuario.puntaje_total=puntajeTotal;
-
-		usuario.save();
+		"""usuario = Usuario.objects.get(username = request.user);
+						
+								usuario.puntaje_total=puntajeTotal;
+						
+								usuario.save();"""
 
 		return render(request, 'juego/fin.html');
 
@@ -106,8 +106,6 @@ def Detalles(request):
 	context = {};
 
 	context["puntajeTotal"] = puntajeTotal;
-
-	
 
 	return render(request, 'juego/detalles.html', context);
 
