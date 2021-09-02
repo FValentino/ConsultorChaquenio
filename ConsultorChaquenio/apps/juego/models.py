@@ -16,22 +16,34 @@ class Funcionamiento(models.Model):
 
 		global excluidas;
 
-		pregunta = random.choice(Pregunta.objects.all());
+		bandera=False;
+		if ( len(excluidas)==0 ):
+
+			pregunta = random.choice(Pregunta.objects.all());
 			
-		if ( len(excluidas)>0 ):
+		else:
 
 			pregunta = random.choice(Pregunta.objects.all());
 
-			for i in range (len(excluidas)):
-				if (pregunta.id == excluidas[i]):
-					pregunta = random.choice(Pregunta.objects.all());
-					i=0;
+			while (bandera!=True):
+				banderaI=True;
+				for e in excluidas:
+					if (pregunta.id == e):
+						pregunta = random.choice(Pregunta.objects.all());
+						banderaI=False;
+						break;
+				if (banderaI==True):
+					bandera=True;
+
 
 		excluidas.append(pregunta.id);
 
-		if (len(excluidas)>9):
+		if (len(excluidas)>19):
 
 			for i in range (len(excluidas)):
 					excluidas.pop();
+
+		print ("HOLA SOY EL ARREGLO DE LAS PREGUNTAS: ", excluidas);
+		print ("HOLA SOY EL PK DE LA PREGUNTA ACTUAL: ", pregunta.id);
 
 		return (pregunta);

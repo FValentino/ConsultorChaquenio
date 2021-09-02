@@ -33,8 +33,6 @@
 
                         {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">{{user.username}}</a></li>
-
-                            <li class="nav-item"><a class="nav-link" href="{% url 'juego:ranking' %}">Ranking</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a></li>

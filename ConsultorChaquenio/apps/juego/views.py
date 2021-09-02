@@ -48,7 +48,11 @@ def Juego (request):
 
 		contPreg = 0;
 
-		Usuario.actualizacionPuntaje(puntajeTotal);
+		usuario = Usuario.objects.get(username = request.user);
+
+		usuario.puntaje_total=puntajeTotal;
+
+		usuario.save();
 
 		return render(request, 'juego/fin.html');
 
