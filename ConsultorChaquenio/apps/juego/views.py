@@ -38,7 +38,7 @@ def Juego (request):
 
 	pregunta = Funcionamiento.obtenerPreguntas();
 
-	categoria = pregunta.categoria;
+	categoria = Categoria.objects.get(pk=pregunta.categoria_id);
 
 	context ["numero"] = contPreg;
 	context ["pregunta"] = pregunta;
@@ -53,6 +53,8 @@ def Juego (request):
 		usuario.puntaje_total=str(puntajeTotal);
 						
 		usuario.save();
+
+		puntajeTotal = 0;
 
 		return render(request, 'juego/fin.html');
 
@@ -135,7 +137,5 @@ def Tabla(request):
 		"cantidad": contador
 
 	}
-
-
 
 	return render(request,"juego/ranking.html",context );
