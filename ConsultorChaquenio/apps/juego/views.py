@@ -51,10 +51,10 @@ def Juego (request):
 		contPreg = 0;
 
 		usuario = Usuario.objects.get(username = request.user);
-						
-		usuario.puntaje_total=str(puntajePartida);
-						
-		usuario.save();
+
+		if int(usuario.puntaje_total) < int(puntajePartida):
+			usuario.puntaje_total=str(puntajePartida);
+			usuario.save();
 
 		return render(request, 'juego/fin.html');
 
