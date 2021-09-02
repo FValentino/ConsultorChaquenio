@@ -32,6 +32,8 @@ def Juego (request):
 	global RespuestaCorrecta;
 	global puntajeTotal;
 
+	puntajePartida = puntajeTotal;
+
 	context = {};
 
 	contPreg = contPreg + 1;
@@ -50,19 +52,13 @@ def Juego (request):
 
 		usuario = Usuario.objects.get(username = request.user);
 						
-		usuario.puntaje_total=str(puntajeTotal);
+		usuario.puntaje_total=str(puntajePartida);
 						
 		usuario.save();
-
-		puntajeTotal = 0;
 
 		return render(request, 'juego/fin.html');
 
 	else:
-
-		pregunta = Funcionamiento.obtenerPreguntas();
-
-		context ["pregunta"] = pregunta;
 
 		context ["respuestas"] = Respuesta.objects.filter(pregunta_id = pregunta.pk);
 
@@ -115,6 +111,8 @@ def Detalles(request):
 
 	context["puntajeTotal"] = puntajeTotal;
 
+	puntajeTotal = 0;
+
 	return render(request, 'juego/detalles.html', context);
 
 
@@ -122,7 +120,7 @@ def Tabla(request):
 
 	context = {};
 
-	mostrar_usuarios = Usuario.objects.filter(is_superuser=False).order_by('puntaje_total')[:10];
+	mostrar_usuarios = Usuario.objects.filter(is_superuser=False).order_by('-puntaje_total')[:10];
 
 	contador = mostrar_usuarios.count();
 

@@ -38,12 +38,9 @@ class Funcionamiento(models.Model):
 
 		excluidas.append(pregunta.id);
 
-		if (len(excluidas)>19):
+		if (len(excluidas)>9):
 
 			for i in range (len(excluidas)):
-					excluidas.pop();
-
-		print ("HOLA SOY EL ARREGLO DE LAS PREGUNTAS: ", excluidas);
-		print ("HOLA SOY EL PK DE LA PREGUNTA ACTUAL: ", pregunta.id);
+				excluidas.pop();
 
 		return (pregunta);
