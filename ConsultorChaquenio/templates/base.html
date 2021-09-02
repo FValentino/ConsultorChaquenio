@@ -30,6 +30,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#about">Nosotros</a></li>
                         <li class="nav-item"><a class="nav-link" href="/#contact">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'juego:ranking' %}">Ranking</a></li>
 
                         {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">{{user.username}}</a></li>

@@ -48,11 +48,11 @@ def Juego (request):
 
 		contPreg = 0;
 
-		"""usuario = Usuario.objects.get(username = request.user);
+		usuario = Usuario.objects.get(username = request.user);
 						
-								usuario.puntaje_total=puntajeTotal;
+		usuario.puntaje_total=str(puntajeTotal);
 						
-								usuario.save();"""
+		usuario.save();
 
 		return render(request, 'juego/fin.html');
 
@@ -82,8 +82,14 @@ def Respuesta_Seleccionada (request):
 	for i in request.POST:
 		if i != "csrfmiddlewaretoken":
 			RespuestaSeleccionada=i;
- 
+
+
+	if (RespuestaSeleccionada == None):
+
+		RespuestaSeleccionada = "No contesto esta pregunta";
+	
 	context["RespuestaSeleccionada"] = RespuestaSeleccionada;
+
 
 	if (RespuestaSeleccionada == RespuestaCorrecta.respuestas):
 		context ["Mensaje"] = "¡Has respondido correctamente! ¡Sumas 1 punto!";
@@ -114,9 +120,14 @@ def Tabla(request):
 
 	context = {};
 
-	mostrar_usuarios = Usuarios.objects.order_by('puntaje_total')[:10];
+	mostrar_usuarios = Usuario.objects.filter(is_superuser=False).order_by('puntaje_total')[:10];
 
 	contador = mostrar_usuarios.count();
+
+	for u in mostrar_usuarios:
+		if (u.puntaje_total=="None"):
+			u.puntaje_total="0";
+			u.save();
 
 	context = {
 
@@ -124,5 +135,7 @@ def Tabla(request):
 		"cantidad": contador
 
 	}
+
+
 
 	return render(request,"juego/ranking.html",context );

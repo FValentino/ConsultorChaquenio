@@ -13,4 +13,6 @@ urlpatterns = [
     path('respuesta/', views.Respuesta_Seleccionada),
 
     path('detalles/', views.Detalles, name="detalles"),
+
+    path('ranking/', views.Tabla, name="ranking"),
 ]
