@@ -5,4 +5,4 @@ from decimal import *
 class Usuario (AbstractUser):
 	localidad = models.CharField(max_length=50, null=True);	
 
-	puntaje_total = models.CharField(max_length=3, default="0");
+	puntaje_total = models.FloatField(default=0);

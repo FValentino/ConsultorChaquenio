@@ -52,8 +52,8 @@ def Juego (request):
 
 		usuario = Usuario.objects.get(username = request.user);
 
-		if int(usuario.puntaje_total) < int(puntajePartida):
-			usuario.puntaje_total=str(puntajePartida);
+		if usuario.puntaje_total < puntajePartida:
+			usuario.puntaje_total = float(puntajePartida);
 			usuario.save();
 
 		return render(request, 'juego/fin.html');
